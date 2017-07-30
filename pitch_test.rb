@@ -8,6 +8,7 @@ mc = MidiCalc.new(f)
 
 
 s = Scale.new(f, 'ionian')
+p s.pc_scale
 
 p i.ordered_pi
 p i.unordered_pi
