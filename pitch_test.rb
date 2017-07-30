@@ -1,6 +1,6 @@
 require './lib/pitches'
 
-def set_add set, set2
+def set_add(set, set2)
   (set | set2) - (set & set2)
 end
 
@@ -20,8 +20,10 @@ p i.unordered_pi == 39
 p i.ordered_pc_interval == 9
 p i.interval_class == 3
 
-
-
 p s.pc_scale
 p s1.pc_scale
 p set_add(s.pc_scale, s1.pc_scale)
+
+p s1.scale.map {|note|
+  MidiCalc.new(Pitch.new(note)).pc_to_midi
+}

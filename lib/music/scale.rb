@@ -9,7 +9,8 @@ class Scale
 
   def scale
     arr = pc_scale
-    notes = note
+    #notes = note DO NOT USE
+    notes = %w[C C# D D# E F F# G G# A A# B]
     arr.map do |n|
       notes[n].to_s
     end
@@ -27,35 +28,41 @@ class Scale
       aeolian: 5,
       locrian: 6
     }
-      temp.rotate modal[@mode.to_sym]
+    temp.rotate modal[@mode.to_sym]
 
   end
 
   private
 
   # returns note names of scale with incorrect spelling
-  # Still needs fixing
+  # Still needs fixing, DO NOT USE YET
   def note
-    pclass = tonic
-    PITCHES.keys.select do |n|
-      if pclass.eql?(1) || pclass.eql?(6)
-        if @pitch_name.include? "#"
-          !/b/.match(n)
-        else
-          !/#/.match(n)
-        end
-      elsif pclass.eql? 11
-        if @pitch_name.include? "b"
-        !/#/.match(n)
-        else
-        !/b/.match(n)
-        end
-      elsif pclass.eql?(3) || pclass.eql?(5) || pclass.eql?(8) || pclass.eql?(10)
-        !/#/.match(n)
-      else
-        !/b/.match(n)
-      end
+    # pclass = tonic
+    # PITCHES.keys.select do |n|
+    #   if pclass.eql?(1) || pclass.eql?(6)
+    #     if @pitch_name.include? "#"
+    #       !/b/.match(n)
+    #     else
+    #       !/#/.match(n)
+    #     end
+    #   elsif pclass.eql? 11
+    #     if @pitch_name.include? "b"
+    #     !/#/.match(n)
+    #     else
+    #     !/b/.match(n)
+    #     end
+    #   elsif pclass.eql?(3) || pclass.eql?(5) || pclass.eql?(8) || pclass.eql?(10)
+    #     !/#/.match(n)
+    #   else
+    #     !/b/.match(n)
+    #   end
+    # end
+    pitch = %w[C C# D D# E F F# G G# A A# B]
+    arr = pc_scale
+    final = arr.map do |n|
+      pitch[n].to_s
     end
+    final
   end
 
   # method for finding tonic note of other modes
