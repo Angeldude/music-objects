@@ -7,8 +7,9 @@ mi = MidiInterval.new(f, d)
 mc = MidiCalc.new(f)
 
 
-s = Scale.new(f, 'ionian')
+s = Scale.new(Pitch.new('c'), 'ionian')
 p s.pc_scale
+p s.scale
 
 p i.ordered_pi
 p i.unordered_pi
