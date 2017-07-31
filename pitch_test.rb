@@ -25,5 +25,7 @@ p s1.pc_scale
 p set_add(s.pc_scale, s1.pc_scale)
 
 p s1.scale.map {|note|
-  MidiCalc.new(Pitch.new(note)).pc_to_midi
-}
+  MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
+}.shuffle + s.scale.map {|note|
+  MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
+}.shuffle
