@@ -18,6 +18,10 @@ class MidiCalc
     (SEMI * @otva) + @pitch_class
   end
 
+  def note
+    {midi: pc_to_midi, octave: otva - 1}
+  end
+
   def midi_to_pc
     @pitch_class
   end
