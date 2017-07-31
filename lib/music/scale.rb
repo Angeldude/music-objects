@@ -9,8 +9,11 @@ class Scale
 
   def scale
     arr = pc_scale
-    #notes = note DO NOT USE
-    notes = %w[C C# D D# E F F# G G# A A# B]
+    if @pitch.pitch_name.include?("b") || @pitch.pitch_name.eql?("F")
+      notes = %w[C Db D Eb E F Gb G Ab A Bb ]
+    else
+      notes = %w[C C# D D# E F F# G G# A A# B]
+    end
     arr.map do |n|
       notes[n].to_s
     end
@@ -33,37 +36,6 @@ class Scale
   end
 
   private
-
-  # returns note names of scale with incorrect spelling
-  # Still needs fixing, DO NOT USE YET
-  def note
-    # pclass = tonic
-    # PITCHES.keys.select do |n|
-    #   if pclass.eql?(1) || pclass.eql?(6)
-    #     if @pitch_name.include? "#"
-    #       !/b/.match(n)
-    #     else
-    #       !/#/.match(n)
-    #     end
-    #   elsif pclass.eql? 11
-    #     if @pitch_name.include? "b"
-    #     !/#/.match(n)
-    #     else
-    #     !/b/.match(n)
-    #     end
-    #   elsif pclass.eql?(3) || pclass.eql?(5) || pclass.eql?(8) || pclass.eql?(10)
-    #     !/#/.match(n)
-    #   else
-    #     !/b/.match(n)
-    #   end
-    # end
-    pitch = %w[C C# D D# E F F# G G# A A# B]
-    arr = pc_scale
-    final = arr.map do |n|
-      pitch[n].to_s
-    end
-    final
-  end
 
   # method for finding tonic note of other modes
   def tonic

@@ -11,9 +11,9 @@ mi = MidiInterval.new(f, d)
 mc = MidiCalc.new(f)
 
 s = Scale.new(Pitch.new('c'), 'ionian')
-s1 = Scale.new(Pitch.new('f#'), 'dorian')
+s1 = Scale.new(Pitch.new('g'), 'phrygian')
 p s.pc_scale
-p s.scale
+p s1.scale
 
 p i.ordered_pi == -39
 p i.unordered_pi == 39
@@ -22,10 +22,10 @@ p i.interval_class == 3
 
 p s.pc_scale
 p s1.pc_scale
-p set_add(s.pc_scale, s1.pc_scale)
+# p set_add(s.pc_scale, s1.pc_scale)
 
-p s1.scale.map {|note|
-  MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
-}.shuffle + s.scale.map {|note|
-  MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
-}.shuffle
+# p s1.scale.map {|note|
+#   MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
+# }.shuffle + s.scale.map {|note|
+#   MidiCalc.new(Pitch.new(note, rand(4)+2)).pc_to_midi
+# }.shuffle
